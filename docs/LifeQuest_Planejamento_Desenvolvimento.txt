@@ -1,0 +1,342 @@
+LIFEQUEST
+PLANEJAMENTO DE DESENVOLVIMENTO POR FATIAS
+
+OBJETIVO
+Desenvolver o LifeQuest por fatias verticais orientadas às telas.
+
+REGRA PRINCIPAL
+Definir/desenhar a tela -> implementar apenas o backend necessário -> implementar o frontend -> testar -> seguir para a próxima fatia.
+
+A infraestrutura será adicionada somente quando a funcionalidade realmente precisar.
+
+
+==================================================
+FUNDAÇÃO MÍNIMA
+==================================================
+
+Ferramentas:
+- Visual Studio 2026
+- .NET 10 SDK
+- Node.js
+- Git
+- MySQL
+- VS Code opcional para frontend
+
+Estrutura inicial:
+
+LifeQuest.sln
+
+src/
+- LifeQuest.Api
+- LifeQuest.Application
+- LifeQuest.Domain
+- LifeQuest.Infrastructure
+- lifequest-web
+
+tests/
+- LifeQuest.Domain.Tests
+- LifeQuest.Application.Tests
+- LifeQuest.IntegrationTests
+
+Tecnologias iniciais:
+- ASP.NET Core
+- ASP.NET Core Identity
+- Entity Framework Core
+- MySQL
+- React
+- TypeScript
+- Vite
+- React Router
+- xUnit
+- NSubstitute
+
+
+==================================================
+ORDEM DAS FATIAS / TELAS
+==================================================
+
+FATIA 1 - LOGIN
+- Estrutura base da solution
+- ASP.NET Core Identity
+- MySQL
+- LifeQuest.Api
+- React base
+- Tela de Login
+- Autenticação
+- Autorização básica
+- Testes
+
+Fluxo:
+React -> LifeQuest.Api -> Identity -> MySQL
+
+
+FATIA 2 - CRIAR CONTA
+- Tela de cadastro
+- Registro do usuário
+- Validações
+- Persistência
+- Testes
+
+
+FATIA 3 - RECUPERAR SENHA
+- Solicitar recuperação
+- Redefinir senha
+- Validações
+- Testes
+
+
+FATIA 4 - APP SHELL
+- Sidebar
+- Header
+- Área principal
+- Menu do usuário
+- Navegação base
+- Rotas protegidas
+
+
+FATIA 5 - ONBOARDING
+- Boas-vindas
+- Primeiro acesso
+- Configuração inicial da Season
+- Testes
+
+
+FATIA 6 - RODA DA VIDA INICIAL
+- Avaliação inicial
+- 12 áreas
+- Scores de 0 a 100
+- UserLifeArea
+- Persistência no MySQL
+- Testes
+
+
+FATIA 7 - DASHBOARD VAZIO
+- Nível
+- XP
+- Roda da Vida resumida
+- Estado sem módulos
+- CTA para criar primeira jornada
+
+
+FATIA 8 - MÓDULOS
+- Listar módulos
+- Criar módulo
+- Editar módulo
+- Detalhe do módulo
+- Arquivar
+- Exclusão quando permitido
+- Testes
+
+
+FATIA 9 - METAS FIXAS
+- Criar meta
+- Editar meta
+- Natureza
+- Dificuldade
+- Progresso
+- Áreas da Roda da Vida
+- Meta obrigatória/opcional
+- Detalhe da meta
+- Testes
+
+
+FATIA 10 - REGISTRO DE PROGRESSO
+- Registrar tempo
+- Registrar páginas
+- Registrar quantidade
+- Registrar ocorrências
+- Histórico básico
+- Atualização de pontos
+- Testes
+
+
+FATIA 11 - DASHBOARD REAL
+- Dados reais de módulos
+- Metas relevantes
+- Progresso
+- Nível
+- XP
+- Roda da Vida
+- Sequência
+
+
+FATIA 12 - GAMIFICAÇÃO
+- XP
+- Level up
+- Achievement
+- Badge
+- Title
+- Feedback visual
+- Testes
+
+
+FATIA 13 - METAS RECORRENTES
+- Frequência
+- Ciclos
+- Streak
+- Milestones
+- Bronze / Prata / Ouro
+- Testes
+
+
+FATIA 14 - REGISTRO RETROATIVO
+- Até 7 dias
+- Recalcular sequência
+- Recalcular pontos
+- Recalcular badges/marcos
+- Testes
+
+
+FATIA 15 - RECOMPENSAS
+- Reward
+- RewardRelease
+- Status
+- Resgate
+- Recompensa por ciclo
+- Regra dos 70%
+
+
+FATIA 16 - TEMPLATES
+- Criar template
+- Aplicar template
+- Gerar cópias independentes
+- Testes
+
+
+FATIA 17 - VÍNCULOS PROFISSIONAIS
+- ProfessionalLink
+- Coach
+- Psychologist
+- Permissões
+- Revogação
+
+
+FATIA 18 - ÁREA PROFISSIONAL
+- Clientes vinculados
+- Dados autorizados
+- ProfessionalAdvice
+- Testes de segurança
+
+
+FATIA 19 - IA
+Adicionar nesta etapa:
+- RabbitMQ
+- Outbox
+- Workers
+- AI Worker
+- MongoDB
+- Provedor de IA
+
+Fluxo:
+MySQL Outbox -> RabbitMQ -> AI Worker -> AI Provider -> MongoDB
+
+Regra:
+A IA gera apenas texto.
+As regras de negócio permanecem no LifeQuest Core.
+
+
+FATIA 20 - TEMPORADA
+- Encerramento
+- Retrospectiva
+- Título final
+- Seleção de metas/módulos para próxima Season
+- Carry-over
+- Reset de progresso recorrente
+- Histórico
+
+
+==================================================
+INFRAESTRUTURA - QUANDO ADICIONAR
+==================================================
+
+DESDE O INÍCIO
+- .NET 10
+- React
+- TypeScript
+- MySQL
+- ASP.NET Core Identity
+- EF Core
+- xUnit
+- NSubstitute
+- Git
+
+QUANDO ENTRAREM TELAS DE DOMÍNIO
+- GraphQL
+- Hot Chocolate
+- Apollo Client
+
+QUANDO HOUVER NECESSIDADE DE GATEWAY
+- YARP
+
+QUANDO HOUVER PROCESSAMENTO ASSÍNCRONO
+- RabbitMQ
+- Outbox
+- Inbox
+- LifeQuest.Workers
+
+QUANDO ENTRAR IA
+- AI Worker
+- MongoDB
+- AI Provider
+
+QUANDO EXISTIREM VÁRIOS PROCESSOS LOCAIS
+- .NET Aspire
+
+QUANDO A SOLUÇÃO ESTIVER MAIS DISTRIBUÍDA
+- OpenTelemetry
+- Traces
+- Metrics
+- Structured Logs
+- Health Checks
+
+
+==================================================
+REGRA DE EXECUÇÃO DE CADA FATIA
+==================================================
+
+1. Definir fluxo do usuário
+2. Definir tela
+3. Revisar UX
+4. Definir contrato necessário
+5. Implementar Domain
+6. Implementar Application
+7. Implementar Infrastructure
+8. Implementar API
+9. Implementar React
+10. Criar testes
+11. Validar
+12. Concluir fatia
+13. Seguir para próxima
+
+
+==================================================
+PRINCÍPIOS
+==================================================
+
+- Não construir todo backend antes do frontend.
+- Não construir todo frontend antes do backend.
+- Não adicionar infraestrutura sem necessidade real.
+- Não instalar bibliotecas apenas porque podem ser úteis no futuro.
+- Cada fatia deve terminar utilizável.
+- Backend calcula regras de negócio.
+- Frontend envia fatos.
+- Manter arquitetura simples enquanto possível.
+- Evoluir infraestrutura conforme a aplicação crescer.
+- Preservar a arquitetura definida nos ADRs.
+
+
+==================================================
+PRIMEIRO PASSO
+==================================================
+
+Iniciar pela FATIA 1 - LOGIN.
+
+Criar:
+- Solution
+- Projetos base
+- MySQL
+- Identity
+- React
+- Tela de Login
+- Autenticação
+- Testes

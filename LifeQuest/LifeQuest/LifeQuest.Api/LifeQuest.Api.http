@@ -1,0 +1,41 @@
+@LifeQuest.Api_HostAddress = http://localhost:5058
+
+GET {{LifeQuest.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+@LifeQuest_Api_HostAddress = https://localhost:7157
+
+POST {{LifeQuest_Api_HostAddress}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "dev@lifequest.local",
+  "password": "Joao_2708"
+}
+
+###
+POST {{LifeQuest_Api_HostAddress}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "naoexiste@lifequest.local",
+  "password": "qualquer"
+}
+
+###
+GET {{LifeQuest_Api_HostAddress}}/api/v1/auth/me
+
+###
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYWJkMDI1Ni1iYTYyLTRlN2MtYWZhMS00ZmU5MmE3ZmJmNDciLCJqdGkiOiI1NjQ1NGE4Ni0wYTVmLTRiNWQtYTUxYS1mOTk2ZWMyOTMzMTkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFhYmQwMjU2LWJhNjItNGU3Yy1hZmExLTRmZTkyYTdmYmY0NyIsImVtYWlsIjoiZGV2QGxpZmVxdWVzdC5sb2NhbCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJuYmYiOjE3OTA4MjMzNDUsImV4cCI6MTc5MDgyNDI0NSwiaXNzIjoiTGlmZVF1ZXN0LkFwaSIsImF1ZCI6ImxpZmVxdWVzdC13ZWIifQ.7Ei_Kv8uyV80yAdkqjyrFMgZyHaFwmmiJP-ljX4ndhM
+
+GET {{LifeQuest_Api_HostAddress}}/api/v1/auth/me
+Authorization: Bearer {{token}}
+
+###
+
+POST {{LifeQuest_Api_HostAddress}}/api/v1/auth/refresh
+
+###
+POST {{LifeQuest_Api_HostAddress}}/api/v1/auth/logout
